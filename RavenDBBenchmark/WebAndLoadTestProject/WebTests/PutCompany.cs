@@ -12,7 +12,7 @@ namespace WebAndLoadTestProject
     {
         public override IEnumerator<WebTestRequest> GetRequestEnumerator()
         {
-            var webTestRequest = new WebTestRequest(Config.RavenUrl + "/bulk_docs")
+            var webTestRequest = new WebTestRequest(NorthwindUrlFactory.GenerateBulkDocsUrl())
             {
                 Method = "POST",
             };

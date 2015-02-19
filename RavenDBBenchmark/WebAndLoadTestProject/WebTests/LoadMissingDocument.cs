@@ -11,8 +11,7 @@ namespace WebAndLoadTestProject
     {
         public override IEnumerator<WebTestRequest> GetRequestEnumerator()
         {
-            var next = Config.RandNext(Config.MaxOrderId + 1, Config.MaxOrderId + 100);
-            var url = Config.RavenUrl + "/docs/Orders/" + next;
+            var url = NorthwindUrlFactory.GenerateMissingOrderDocUrl();
             yield return new WebTestRequest(url)
             {
                 ExpectedHttpStatusCode = 404

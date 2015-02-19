@@ -4,16 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{9D8280E8-CF9C-4E00-A209-25E50B888F50}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{97209A8E-CFA5-40AA-8455-EE8B691AEF60}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>RavenDBBenchmark</RootNamespace>
-    <AssemblyName>RavenDBBenchmark</AssemblyName>
+    <RootNamespace>NorthwindLoadTestPlugin</RootNamespace>
+    <AssemblyName>NorthwindLoadTestPlugin</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -32,18 +30,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.VisualStudio.QualityTools.LoadTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="Raven.Abstractions">
-      <HintPath>..\packages\RavenDB.Client.3.0.3528\lib\net45\Raven.Abstractions.dll</HintPath>
+      <HintPath>..\packages\RavenDB.Client.3.0.3599\lib\net45\Raven.Abstractions.dll</HintPath>
     </Reference>
     <Reference Include="Raven.Client.Lightweight">
-      <HintPath>..\packages\RavenDB.Client.3.0.3528\lib\net45\Raven.Client.Lightweight.dll</HintPath>
+      <HintPath>..\packages\RavenDB.Client.3.0.3599\lib\net45\Raven.Client.Lightweight.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.Management" />
-    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -51,21 +48,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PerformanceMonitoring.cs" />
-    <Compile Include="ProfilingInformation.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="DatabaseFactory.cs" />
+    <Compile Include="Model\Address.cs" />
+    <Compile Include="Model\Category.cs" />
+    <Compile Include="Model\Company.cs" />
+    <Compile Include="Model\Contact.cs" />
+    <Compile Include="Model\Employee.cs" />
+    <Compile Include="Model\Order.cs" />
+    <Compile Include="Model\OrderLine.cs" />
+    <Compile Include="Model\Person.cs" />
+    <Compile Include="Model\Product.cs" />
+    <Compile Include="Model\Region.cs" />
+    <Compile Include="Model\Shipper.cs" />
+    <Compile Include="Model\Store.cs" />
+    <Compile Include="Model\Supplier.cs" />
+    <Compile Include="Model\Territory.cs" />
+    <Compile Include="NorthwindLoadTestPlugin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="QueryGenerator.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\RavenDBOrdersWebTestPlugin\RavenDBOrdersWebTestPlugin.csproj">
-      <Project>{b0afdc92-feaf-414a-a1c2-90fb3b0f1257}</Project>
-      <Name>RavenDBOrdersWebTestPlugin</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

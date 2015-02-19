@@ -5,12 +5,18 @@ VisualStudioVersion = 12.0.31010.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RavenDBBenchmark", "RavenDBBenchmark\RavenDBBenchmark.csproj", "{9D8280E8-CF9C-4E00-A209-25E50B888F50}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAndLoadTestProject", "WebAndLoadTestProject\WebAndLoadTestProject.csproj", "{05245635-52E6-472D-A1B9-5EAE5E1AF6B4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NorthwindWebTest", "WebAndLoadTestProject\NorthwindWebTest.csproj", "{05245635-52E6-472D-A1B9-5EAE5E1AF6B4}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{881E7AF5-2FA4-4E85-826B-BBF63225B85C}"
 	ProjectSection(SolutionItems) = preProject
 		Local.testsettings = Local.testsettings
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NorthwindLoadTestPlugin", "NorthwindLoadTestPlugin\NorthwindLoadTestPlugin.csproj", "{97209A8E-CFA5-40AA-8455-EE8B691AEF60}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RavenDBOrdersWebTest", "RavenDBOrdersWebTest\RavenDBOrdersWebTest.csproj", "{3FF6E0DC-DC35-4CF1-BBCC-AE8C6B2DFD72}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RavenDBOrdersWebTestPlugin", "RavenDBOrdersWebTestPlugin\RavenDBOrdersWebTestPlugin.csproj", "{B0AFDC92-FEAF-414A-A1C2-90FB3B0F1257}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -26,6 +32,18 @@ Global
 		{05245635-52E6-472D-A1B9-5EAE5E1AF6B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{05245635-52E6-472D-A1B9-5EAE5E1AF6B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{05245635-52E6-472D-A1B9-5EAE5E1AF6B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{97209A8E-CFA5-40AA-8455-EE8B691AEF60}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97209A8E-CFA5-40AA-8455-EE8B691AEF60}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97209A8E-CFA5-40AA-8455-EE8B691AEF60}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97209A8E-CFA5-40AA-8455-EE8B691AEF60}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3FF6E0DC-DC35-4CF1-BBCC-AE8C6B2DFD72}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3FF6E0DC-DC35-4CF1-BBCC-AE8C6B2DFD72}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3FF6E0DC-DC35-4CF1-BBCC-AE8C6B2DFD72}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3FF6E0DC-DC35-4CF1-BBCC-AE8C6B2DFD72}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B0AFDC92-FEAF-414A-A1C2-90FB3B0F1257}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0AFDC92-FEAF-414A-A1C2-90FB3B0F1257}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0AFDC92-FEAF-414A-A1C2-90FB3B0F1257}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0AFDC92-FEAF-414A-A1C2-90FB3B0F1257}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

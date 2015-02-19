@@ -14,8 +14,8 @@ namespace WebAndLoadTestProject
     {
         public override IEnumerator<WebTestRequest> GetRequestEnumerator()
         {
-            var next = Config.RandNext(1,Config.MaxOrderId);
-            var url = Config.RavenUrl + "/docs/Orders/" + next;
+            string orderId;
+            var url = NorthwindUrlFactory.GenerateRandomOrderDocDocUrl(out orderId);
             var webTestRequest = new WebTestRequest(url)
             {
                 ExpectedHttpStatusCode = 200
@@ -27,7 +27,7 @@ namespace WebAndLoadTestProject
             };
             yield return webTestRequest;
             order.Freight += (decimal)0.1;
-            var webTestRequestPut = new WebTestRequest(Config.RavenUrl + "/bulk_docs")
+            var webTestRequestPut = new WebTestRequest(NorthwindUrlFactory.GenerateBulkDocsUrl())
             {
                 Method = "POST"
             };
@@ -38,7 +38,7 @@ namespace WebAndLoadTestProject
                 BodyString = new JArray(new JObject
                 {
                     {"Method", "PUT"},
-                    {"Key", string.Format("orders/{0}",next)},
+                    {"Key", string.Format("orders/{0}",orderId)},
                     {
                         "Metadata", new JObject
                         {

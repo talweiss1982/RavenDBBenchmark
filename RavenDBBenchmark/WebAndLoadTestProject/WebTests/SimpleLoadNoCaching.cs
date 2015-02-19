@@ -5,31 +5,11 @@ using Microsoft.VisualStudio.TestTools.WebTesting;
 
 namespace WebAndLoadTestProject
 {
-    public static class Config
-    {
-        public static string RavenUrl = "http://localhost:8080/databases/Northwind";
-        public static int MaxCustomerId = 91;
-        public static int MaxOrderId = 830;
-
-        [ThreadStatic] private static Random _random;
-
-        public static int RandNext(int min, int max)
-        {
-            if(_random == null)
-                _random = new Random(205);
-
-            return _random.Next(min, max);
-        }
-    }
-
     public class SimpleLoadNoCaching : WebTest
     {
         public override IEnumerator<WebTestRequest> GetRequestEnumerator()
         {
-            var next = Config.RandNext(1, Config.MaxCustomerId);
-
-
-            yield return new WebTestRequest(Config.RavenUrl + "/docs/Companies/" + next)
+            yield return new WebTestRequest(NorthwindUrlFactory.GenerateRandomCompanyDocUrl())
             {
                 ExpectedHttpStatusCode = 200
             };
@@ -40,9 +20,7 @@ namespace WebAndLoadTestProject
     {
         public override IEnumerator<WebTestRequest> GetRequestEnumerator()
         {
-            var next = Config.RandNext(1, Config.MaxCustomerId);
-
-            var url = Config.RavenUrl + "/docs/Companies/" + next;
+            var url = NorthwindUrlFactory.GenerateRandomCompanyDocUrl();
             string etag = null;
             var webTestRequest = new WebTestRequest(url)
             {
@@ -67,10 +45,7 @@ namespace WebAndLoadTestProject
     {
         public override IEnumerator<WebTestRequest> GetRequestEnumerator()
         {
-            var next = Config.RandNext(1, Config.MaxOrderId);
-
-
-            var webTestRequest = new WebTestRequest(Config.RavenUrl + "/docs/orders/" + next + "?include=Company")
+            var webTestRequest = new WebTestRequest(NorthwindUrlFactory.GenerateRandomOrderDocIncludeCompanyUrl())
             {
                 ExpectedHttpStatusCode =  200
             };
@@ -84,10 +59,7 @@ namespace WebAndLoadTestProject
     {
         public override IEnumerator<WebTestRequest> GetRequestEnumerator()
         {
-            var next = Config.RandNext(1, Config.MaxOrderId );
-
-
-            var url = Config.RavenUrl + "/docs/orders/" + next + "?include=Company";
+            var url = NorthwindUrlFactory.GenerateRandomOrderDocIncludeCompanyUrl();
             var webTestRequest = new WebTestRequest(url)
             {
                 ExpectedHttpStatusCode = 200
@@ -115,7 +87,7 @@ namespace WebAndLoadTestProject
     //{
     //    private readonly string _baseUrl = ConfigurationManager.AppSettings["RavenUrl"];
 
-    //    private readonly int _maxCustomerId = int.Parse(ConfigurationManager.AppSettings["MaxCustomerId"]);
+    //    private readonly int _maxCustomerId = int.Parse(ConfigurationManager.AppSettings["MaxCompanyId"]);
 
     //    private readonly Random _rand = new Random(206);
 

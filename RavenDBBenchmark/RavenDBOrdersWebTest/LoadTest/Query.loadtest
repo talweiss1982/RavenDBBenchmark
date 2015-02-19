@@ -1,11 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<LoadTest Name="LoadTest1" Description="" Owner="" storage="c:\work\ravendbbenchmark\ravendbbenchmark\webandloadtestproject\loadtest1.loadtest" Priority="2147483647" Enabled="true" CssProjectStructure="" CssIteration="" DeploymentItemsEditable="" WorkItemIds="" TraceLevel="None" CurrentRunConfig="Run Settings1" Id="60588b6f-743c-4dcc-8b25-b77fd527f99a" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+<LoadTest Name="Query" Description="" Owner="" storage="c:\work\ravendbbenchmark\ravendbbenchmark\ravendborderswebtest\loadtest\query.loadtest" Priority="2147483647" Enabled="true" CssProjectStructure="" CssIteration="" DeploymentItemsEditable="" WorkItemIds="" TraceLevel="None" CurrentRunConfig="Run Settings1" Id="8c81b6bd-b87f-4389-9f4d-5a2d539db177" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
   <Scenarios>
-    <Scenario Name="ReadingOnly" DelayBetweenIterations="0" PercentNewUsers="0" IPSwitching="false" TestMixType="PercentageOfTestsStarted" ApplyDistributionToPacingDelay="true" MaxTestIterations="0" DisableDuringWarmup="false" DelayStartTime="0" AllowedAgents="">
+    <Scenario Name="Facetes " DelayBetweenIterations="0" PercentNewUsers="0" IPSwitching="false" TestMixType="PercentageOfTestsStarted" ApplyDistributionToPacingDelay="true" MaxTestIterations="0" DisableDuringWarmup="false" DelayStartTime="0" AllowedAgents="">
       <ThinkProfile Value="0" Pattern="Off" />
-      <LoadProfile Pattern="Step" InitialUsers="30" MaxUsers="200" StepUsers="30" StepDuration="10" StepRampTime="0" />
+      <LoadProfile Pattern="Constant" InitialUsers="50" />
       <TestMix>
-        <TestProfile Name="LoadModifyPut" Path="bin\debug\webandloadtestproject.dll" Id="2e8f8b8f-37ba-8eaa-b43b-d5cc19e9d6a9" Percentage="100" Type="Microsoft.VisualStudio.TestTools.WebStress.CodedWebTestElement, Microsoft.VisualStudio.QualityTools.LoadTest, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+        <TestProfile Name="AddOrderToExistingCustomer" Path="..\bin\debug\ravendborderswebtest.dll" Id="37bb70b9-ecc5-0fac-08f1-53ce7fb91dc5" Percentage="80" Type="Microsoft.VisualStudio.TestTools.WebStress.CodedWebTestElement, Microsoft.VisualStudio.QualityTools.LoadTest, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+        <TestProfile Name="CreateNewCustomerWithSingleOrder" Path="..\bin\debug\ravendborderswebtest.dll" Id="b7c81071-55bd-aabc-eab1-a41ea6de835b" Percentage="20" Type="Microsoft.VisualStudio.TestTools.WebStress.CodedWebTestElement, Microsoft.VisualStudio.QualityTools.LoadTest, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
       </TestMix>
       <BrowserMix>
         <BrowserProfile Percentage="100">
@@ -422,7 +423,7 @@
     </CounterSet>
   </CounterSets>
   <RunConfigurations>
-    <RunConfiguration Name="Run Settings1" Description="" ResultsStoreType="Database" TimingDetailsStorage="AllIndividualDetails" SaveTestLogsOnError="true" SaveTestLogsFrequency="0" MaxErrorDetails="200" MaxErrorsPerType="1000" MaxThresholdViolations="1000" MaxRequestUrlsReported="1000" UseTestIterations="true" RunDuration="300" WarmupTime="0" CoolDownTime="0" TestIterations="1000" WebTestConnectionModel="ConnectionPerUser" WebTestConnectionPoolSize="50" SampleRate="5" ValidationLevel="Low" SqlTracingConnectString="" SqlTracingConnectStringDisplayValue="" SqlTracingDirectory="" SqlTracingEnabled="false" SqlTracingFileCount="2" SqlTracingRolloverEnabled="true" SqlTracingMinimumDuration="500" RunUnitTestsInAppDomain="true" CoreCount="0">
+    <RunConfiguration Name="Run Settings1" Description="" ResultsStoreType="None" TimingDetailsStorage="AllIndividualDetails" SaveTestLogsOnError="true" SaveTestLogsFrequency="0" MaxErrorDetails="200" MaxErrorsPerType="1000" MaxThresholdViolations="1000" MaxRequestUrlsReported="1000" UseTestIterations="false" RunDuration="300" WarmupTime="0" CoolDownTime="0" TestIterations="100" WebTestConnectionModel="ConnectionPerUser" WebTestConnectionPoolSize="50" SampleRate="15" ValidationLevel="High" SqlTracingConnectString="" SqlTracingConnectStringDisplayValue="" SqlTracingDirectory="" SqlTracingEnabled="false" SqlTracingFileCount="2" SqlTracingRolloverEnabled="true" SqlTracingMinimumDuration="500" RunUnitTestsInAppDomain="true" CoreCount="0">
       <CounterSetMappings>
         <CounterSetMapping ComputerName="[CONTROLLER MACHINE]">
           <CounterSetReferences>
@@ -438,4 +439,7 @@
       </CounterSetMappings>
     </RunConfiguration>
   </RunConfigurations>
+  <LoadTestPlugins>
+    <LoadTestPlugin Classname="RavenDBOrdersWebTestPlugin.OrdersDatabaseFactory, RavenDBOrdersWebTestPlugin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" DisplayName="OrdersDatabaseFactory" Description="" />
+  </LoadTestPlugins>
 </LoadTest>
