@@ -38,7 +38,7 @@ namespace RavenDBOrdersWebTest
             {
                 case 1:
                     Order lastOrderObj = null;
-                    var lastOrderRequest = new WebTestRequest(OrdersDatabaseUrlFactory.GenerateLoadOrderUrl(lastOrder))
+                    var lastOrderRequest = new WebTestRequest(OrdersDatabaseUrlFactory.GenerateLoadDocUrl(lastOrder))
                     {
                         ExpectedHttpStatusCode = 200
                     };
@@ -62,7 +62,7 @@ namespace RavenDBOrdersWebTest
                 case 2:
                     var productId = "products/" + Utiles.NextRandom(1, OrdersConfig.NumberOfProducts);                    
                     lastOrderObj = null;
-                    lastOrderRequest = new WebTestRequest(OrdersDatabaseUrlFactory.GenerateLoadOrderUrl(lastOrder))
+                    lastOrderRequest = new WebTestRequest(OrdersDatabaseUrlFactory.GenerateLoadDocUrl(lastOrder))
                     {
                         ExpectedHttpStatusCode = 200
                     };

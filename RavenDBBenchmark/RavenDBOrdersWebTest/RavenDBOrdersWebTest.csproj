@@ -55,6 +55,7 @@
   <ItemGroup>
     <Compile Include="WebTestUtiles.cs" />
     <Compile Include="WebTest\AddOrderToExistingCustomer.cs" />
+    <Compile Include="WebTest\Browsing.cs" />
     <Compile Include="WebTest\CreateNewCustomerWithSingleOrder.cs" />
     <Compile Include="WebTest\FacetQuery.cs" />
     <Compile Include="WebTest\GenerateCustomerWithOrders.cs" />

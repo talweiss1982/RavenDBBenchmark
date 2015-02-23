@@ -52,6 +52,9 @@ namespace RavenDBOrdersWebTestPlugin
             writer.WriteLine(String.Format("It took {0}(ms) to insert {1} products into the database.",sw.ElapsedMilliseconds,OrdersConfig.NumberOfProducts));
             writer.Close();
             new ProductIndexByPriceAndWeightAndManufacturerAndColor().Execute(_documentStore);
+            new CustomersByName().Execute(_documentStore);
+            new SalesPerProduct().Execute(_documentStore);
+            new SalesPerCustomer().Execute(_documentStore);
             while (_documentStore.DatabaseCommands.GetStatistics().StaleIndexes.Count() != 0)
             {
                 Thread.Sleep(100);
@@ -91,5 +94,77 @@ namespace RavenDBOrdersWebTestPlugin
             Sort(x => x.Weight, SortOptions.Double);
         }
     }
-    
+
+    public class CustomersByName : AbstractIndexCreationTask<Customer>
+    {
+        public CustomersByName()
+        {
+            Map = customers => from customer in customers
+                select new
+                {
+                    customer.Name
+                };
+        }
+    }
+
+    public class SalesPerProduct : AbstractIndexCreationTask<Order, SalesPerProduct.Result>
+    {
+        public SalesPerProduct()
+        {
+            Map = orders => from order in orders
+                from orderLine in order.Lines
+                let product = LoadDocument<Product>(orderLine.ProductId)
+                select new
+                {
+                    Name = product.Name,
+                    Sales = (product.Price * orderLine.Quantity) * (1 - orderLine.Discount)
+                };
+            Reduce = results => from res in results
+                group res by res.Name into g
+                select new
+                {
+                    Name = g.Key,
+                    Sales = g.Sum(x => x.Sales)
+                };
+            MaxIndexOutputsPerDocument = 1000;
+        }
+
+        public class Result
+        {
+            public string Name;
+            public double Sales;
+        }
+    }
+
+    public class SalesPerCustomer : AbstractIndexCreationTask<Customer, SalesPerProduct.Result>
+    {
+        public SalesPerCustomer()
+        {
+            Map = customers => from customer in customers
+                from orderId in customer.Orders
+                let order = LoadDocument<Order>(orderId)
+                from productLine in order.Lines
+                let product = LoadDocument<Product>(productLine.ProductId)
+                select new Result
+                {
+                    Name = customer.Name,
+                    Sales = (product.Price * productLine.Quantity) * (1 - productLine.Discount)
+                };
+            Reduce = results => from result in results
+                group result by result.Name
+                into g
+                select new Result
+                {
+                    Name = g.Key,
+                    Sales = g.Sum(x => x.Sales)
+                };
+            MaxIndexOutputsPerDocument = 10000;
+        }
+
+        public class Result
+        {
+            public string Name;
+            public double Sales;
+        }
+    }
 }

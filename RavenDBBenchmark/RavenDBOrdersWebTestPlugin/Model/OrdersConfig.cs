@@ -8,9 +8,9 @@ namespace RavenDBOrdersWebTestPlugin.Model
 {
     public static class OrdersConfig
     {
-        public static int NumberOfProducts = 100000;
-        public static int InitialOrdersPerCustomer = 10;
-        public static int InitialOrderLinesPerOrder = 2;
+        public static int NumberOfProducts = 1;
+        public static int InitialOrdersPerCustomer = 1;
+        public static int InitialOrderLinesPerOrder = 1;
         public static long CapacityOfOrderHiloKeyGenerator = 1000000;
         public static long CapacityOfCustomerHiloKeyGenerator = 1000000;
         public static string BulkInsertLogFilePath = @"C:\work\Tests\BulkInsert.txt";

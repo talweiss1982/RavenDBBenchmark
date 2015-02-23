@@ -21,9 +21,16 @@ namespace RavenDBOrdersWebTestPlugin.Model
         public static Customer GenerateCustomer()
         {
             var customer = builder.Value.Build();
+            customer.Name = "custoemr" + GetNextCustoemrId();
             customer.Contact = Model.Contact.GenerateContact();
             return customer;
         }
+
+        private static int GetNextCustoemrId()
+        {
+            return Interlocked.Increment(ref _currentCustomerIdForNameGeneration);
+        }
+        private static int _currentCustomerIdForNameGeneration = 0;
         private static readonly ThreadLocal<ISingleObjectBuilder<Customer>> builder = new ThreadLocal<ISingleObjectBuilder<Customer>>(Builder<Customer>.CreateNew);
     }
 }

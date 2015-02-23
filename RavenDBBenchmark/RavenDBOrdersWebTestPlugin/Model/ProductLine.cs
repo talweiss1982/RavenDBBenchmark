@@ -12,13 +12,13 @@ namespace RavenDBOrdersWebTestPlugin.Model
     {
         public string ProductId { get; set; }
         public int Quantity { get; set; }
-        public double discount { get; set; }
+        public double Discount { get; set; }
 
         public static ProductLine GenerateProductLine()
         {
             var productLine = new ProductLine();
             productLine.Quantity = Utiles.NextRandom(1, 100);
-            productLine.discount = Utiles.NextRandom(0.0, 0.5);
+            productLine.Discount = Utiles.NextRandom(0.0, 0.5);
             return productLine;          
         }
         

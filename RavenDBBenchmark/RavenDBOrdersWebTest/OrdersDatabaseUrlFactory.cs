@@ -29,9 +29,9 @@ namespace RavenDBOrdersWebTest
         {
             return DatabaseUrl + "/docs/Customers/" + id;
         }
-        public static string GenerateLoadOrderUrl(string id)
+        public static string GenerateLoadDocUrl(string docId)
         {
-            return DatabaseUrl + "/docs/" + id;
+            return DatabaseUrl + "/docs/" + docId;
         }
 
         public static string GeneratePriceFacetQuery()
