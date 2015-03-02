@@ -1,11 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<LoadTest Name="WriteInitialDatabase" Description="" Owner="" storage="c:\work\ravendbbenchmark\ravendbbenchmark\ravendborderswebtest\loadtest\writeinitialdatabase.loadtest" Priority="2147483647" Enabled="true" CssProjectStructure="" CssIteration="" DeploymentItemsEditable="" WorkItemIds="" TraceLevel="None" CurrentRunConfig="Run Settings1" Id="0073ae76-b07a-4b5e-8144-19ec03906a81" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+<LoadTest Name="ReadHeavy" Description="" Owner="" storage="c:\work\ravendbbenchmark\ravendbbenchmark\ravendborderswebtest\loadtest\readheavy.loadtest" Priority="2147483647" Enabled="true" CssProjectStructure="" CssIteration="" DeploymentItemsEditable="" WorkItemIds="" TraceLevel="None" CurrentRunConfig="Run Settings1" Id="e99337ed-14ea-49d6-be43-fc160e164202" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
   <Scenarios>
-    <Scenario Name="Write Heavy" DelayBetweenIterations="0" PercentNewUsers="0" IPSwitching="false" TestMixType="PercentageOfTestsStarted" ApplyDistributionToPacingDelay="true" MaxTestIterations="0" DisableDuringWarmup="false" DelayStartTime="0" AllowedAgents="">
+    <Scenario Name="ReadHeavy" DelayBetweenIterations="0" PercentNewUsers="0" IPSwitching="false" TestMixType="PercentageOfTestsStarted" ApplyDistributionToPacingDelay="true" MaxTestIterations="0" DisableDuringWarmup="false" DelayStartTime="0" AllowedAgents="">
       <ThinkProfile Value="0" Pattern="Off" />
-      <LoadProfile Pattern="Constant" InitialUsers="25" />
+      <LoadProfile Pattern="Step" InitialUsers="300" MaxUsers="2000" StepUsers="20" StepDuration="5" StepRampTime="0" />
       <TestMix>
-        <TestProfile Name="GenerateCustomerWithOrders" Path="..\bin\release\ravendborderswebtest.dll" Id="5f52e024-6cae-9475-947e-7f2b3e2c055a" Percentage="100" Type="Microsoft.VisualStudio.TestTools.WebStress.CodedWebTestElement, Microsoft.VisualStudio.QualityTools.LoadTest, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+        <TestProfile Name="Browsing" Path="..\bin\release\ravendborderswebtest.dll" Id="8613522d-7525-679c-4d8e-66bf05747560" Percentage="90" Type="Microsoft.VisualStudio.TestTools.WebStress.CodedWebTestElement, Microsoft.VisualStudio.QualityTools.LoadTest, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+        <TestProfile Name="GenerateCustomerWithOrders" Path="..\bin\release\ravendborderswebtest.dll" Id="5f52e024-6cae-9475-947e-7f2b3e2c055a" Percentage="10" Type="Microsoft.VisualStudio.TestTools.WebStress.CodedWebTestElement, Microsoft.VisualStudio.QualityTools.LoadTest, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
       </TestMix>
       <BrowserMix>
         <BrowserProfile Percentage="100">
@@ -422,7 +423,7 @@
     </CounterSet>
   </CounterSets>
   <RunConfigurations>
-    <RunConfiguration Name="Run Settings1" Description="" ResultsStoreType="Database" TimingDetailsStorage="AllIndividualDetails" SaveTestLogsOnError="true" SaveTestLogsFrequency="0" MaxErrorDetails="200" MaxErrorsPerType="1000" MaxThresholdViolations="1000" MaxRequestUrlsReported="1000" UseTestIterations="true" RunDuration="300" WarmupTime="0" CoolDownTime="0" TestIterations="10000" WebTestConnectionModel="ConnectionPerUser" WebTestConnectionPoolSize="50" SampleRate="15" ValidationLevel="High" SqlTracingConnectString="" SqlTracingConnectStringDisplayValue="" SqlTracingDirectory="" SqlTracingEnabled="false" SqlTracingFileCount="2" SqlTracingRolloverEnabled="true" SqlTracingMinimumDuration="500" RunUnitTestsInAppDomain="true" CoreCount="0">
+    <RunConfiguration Name="Run Settings1" Description="" ResultsStoreType="Database" TimingDetailsStorage="AllIndividualDetails" SaveTestLogsOnError="true" SaveTestLogsFrequency="0" MaxErrorDetails="200" MaxErrorsPerType="1000" MaxThresholdViolations="1000" MaxRequestUrlsReported="1000" UseTestIterations="false" RunDuration="300" WarmupTime="0" CoolDownTime="0" TestIterations="100" WebTestConnectionModel="ConnectionPerUser" WebTestConnectionPoolSize="50" SampleRate="15" ValidationLevel="Low" SqlTracingConnectString="" SqlTracingConnectStringDisplayValue="" SqlTracingDirectory="" SqlTracingEnabled="false" SqlTracingFileCount="2" SqlTracingRolloverEnabled="true" SqlTracingMinimumDuration="500" RunUnitTestsInAppDomain="true" CoreCount="0">
       <CounterSetMappings>
         <CounterSetMapping ComputerName="[CONTROLLER MACHINE]">
           <CounterSetReferences>

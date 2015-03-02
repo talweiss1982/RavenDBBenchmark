@@ -64,6 +64,18 @@
     <Compile Include="RavenDBWebTest.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="LoadTest\profiling.loadtest">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="LoadTest\ReadHeavy.loadtest">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="LoadTest\BalancedReadWrite.loadtest">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="LoadTest\WriteHeavy.loadtest">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="LoadTest\Debug.loadtest">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

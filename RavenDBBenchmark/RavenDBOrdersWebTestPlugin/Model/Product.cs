@@ -11,9 +11,9 @@ namespace RavenDBOrdersWebTestPlugin.Model
     public class Product
     {
         public String Name { get; set; }
-        public double Price { get; set; }
+        public decimal Price { get; set; }
         public List<String> Tags { get; set; }
-        public double Weight { get; set; }
+        public decimal Weight { get; set; }
         public String Manufacturer { get; set; }
         public String Color { get; set; }
         public static Product GenerateProduct(string productName = null)

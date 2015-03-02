@@ -16,9 +16,13 @@ namespace RavenDBOrdersWebTestPlugin.Model
             return _rand.Next(from, to);
         }
 
-        public static double NextRandom(double from, double to)
+        public static decimal NextRandom(decimal from, decimal to)
         {
-            return _rand.NextDouble()*(to - from) + from;
+            return (decimal)_rand.NextDouble()*(to - from) + from;
+        }
+        public static decimal NextRandom(double from, double to)
+        {
+            return (decimal)(_rand.NextDouble() * (to - from) + from);
         }
     }
 }

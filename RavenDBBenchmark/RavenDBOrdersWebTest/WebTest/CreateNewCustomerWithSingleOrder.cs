@@ -32,7 +32,8 @@ namespace RavenDBOrdersWebTest
             var insertCustomerWithOrder = new WebTestRequest(OrdersDatabaseUrlFactory.GenerateBulkDocsUrl())
             {
                 ExpectedHttpStatusCode = 200,
-                Method = "POST"
+                Method = "POST",
+                ReportingName = "CreateNewCustomerWithSingleOrder_insertCustomerWithOrder"
             };
             WebTestUtiles.AddJObjectToJArrayForPost(order, orderId, "Orders", orderAndCustomer);
             var customerId = OrdersDatabaseFactory.GenerateNewCustoemrId(customer);

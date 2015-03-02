@@ -19,7 +19,8 @@ namespace RavenDBOrdersWebTest
             var webTestRequest = new WebTestRequest(OrdersDatabaseUrlFactory.GenerateBulkDocsUrl())
             {
                 Method = "POST",
-                ExpectedHttpStatusCode = 200
+                ExpectedHttpStatusCode = 200,
+                ReportingName = "GenerateCustomerWithOrders_BulkDoc"
             };
             var customer = Customer.GenerateCustomer();
             customer.Orders = new List<String>();

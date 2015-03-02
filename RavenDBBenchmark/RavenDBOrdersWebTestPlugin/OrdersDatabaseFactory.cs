@@ -66,7 +66,7 @@ namespace RavenDBOrdersWebTestPlugin
         private static HiLoKeyGenerator _ordersHiloGenerator = new HiLoKeyGenerator("orders", OrdersConfig.CapacityOfOrderHiloKeyGenerator);
         private static HiLoKeyGenerator _customersHiloGenerator = new HiLoKeyGenerator("customers", OrdersConfig.CapacityOfCustomerHiloKeyGenerator);
         public static readonly string DatabaseName = "OrdersDB";
-        public static readonly string ServerUrl = "http://localhost:8080";
+        public static readonly string ServerUrl = "http://corax:8080/";
 
         public static string GenerateNewOrderId(object entity)
         {
@@ -132,7 +132,7 @@ namespace RavenDBOrdersWebTestPlugin
         public class Result
         {
             public string Name;
-            public double Sales;
+            public decimal Sales;
         }
     }
 
@@ -164,7 +164,7 @@ namespace RavenDBOrdersWebTestPlugin
         public class Result
         {
             public string Name;
-            public double Sales;
+            public decimal Sales;
         }
     }
 }

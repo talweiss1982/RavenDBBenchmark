@@ -21,7 +21,8 @@ namespace RavenDBOrdersWebTest
             string custoemrId = null;
             var fetchRandomCustomer = new WebTestRequest(OrdersDatabaseUrlFactory.GenerateFetchRandomCustomersQueryUrl())
             {
-                ExpectedHttpStatusCode = 200
+                ExpectedHttpStatusCode = 200,
+                ReportingName = "AddOrderToExistingCustomer_fetchRandomCustomer"
             };
             fetchRandomCustomer.ValidateResponse += (sender, args) =>
             {
@@ -40,7 +41,8 @@ namespace RavenDBOrdersWebTest
                     Order lastOrderObj = null;
                     var lastOrderRequest = new WebTestRequest(OrdersDatabaseUrlFactory.GenerateLoadDocUrl(lastOrder))
                     {
-                        ExpectedHttpStatusCode = 200
+                        ExpectedHttpStatusCode = 200,
+                        ReportingName = "AddOrderToExistingCustomer_lastOrderRequest"
                     };
                     lastOrderRequest.ValidateResponse += (sender, args) =>
                     {
@@ -50,7 +52,8 @@ namespace RavenDBOrdersWebTest
                     var insertOrderWithCustomerRequest = new WebTestRequest(OrdersDatabaseUrlFactory.GenerateBulkDocsUrl())
                     {
                         ExpectedHttpStatusCode = 200,
-                        Method = "POST"
+                        Method = "POST",
+                        ReportingName = "AddOrderToExistingCustomer_insertOrderWithCustomerRequest"
                     };
                     var orderId = OrdersDatabaseFactory.GenerateNewOrderId(lastOrderObj); //should i clone this object?
                     WebTestUtiles.AddJObjectToJArrayForPost(lastOrderObj, orderId, "Orders", jArray);
@@ -64,7 +67,8 @@ namespace RavenDBOrdersWebTest
                     lastOrderObj = null;
                     lastOrderRequest = new WebTestRequest(OrdersDatabaseUrlFactory.GenerateLoadDocUrl(lastOrder))
                     {
-                        ExpectedHttpStatusCode = 200
+                        ExpectedHttpStatusCode = 200,
+                        ReportingName = "AddOrderToExistingCustomer_lastOrderRequest"
                     };
                     lastOrderRequest.ValidateResponse += (sender, args) =>
                     {
@@ -78,7 +82,8 @@ namespace RavenDBOrdersWebTest
                     insertOrderWithCustomerRequest = new WebTestRequest(OrdersDatabaseUrlFactory.GenerateBulkDocsUrl())
                     {
                         ExpectedHttpStatusCode = 200,
-                        Method = "POST"
+                        Method = "POST",
+                        ReportingName = "AddOrderToExistingCustomer_insertOrderWithCustomerRequest"
                     };
                     orderId = OrdersDatabaseFactory.GenerateNewOrderId(newOrder); 
                     WebTestUtiles.AddJObjectToJArrayForPost(newOrder, orderId, "Orders", jArray);
@@ -97,7 +102,8 @@ namespace RavenDBOrdersWebTest
                     insertOrderWithCustomerRequest = new WebTestRequest(OrdersDatabaseUrlFactory.GenerateBulkDocsUrl())
                     {
                         ExpectedHttpStatusCode = 200,
-                        Method = "POST"
+                        Method = "POST",
+                        ReportingName = "AddOrderToExistingCustomer_insertOrderWithCustomerRequest"
                     };
                     orderId = OrdersDatabaseFactory.GenerateNewOrderId(newOrder);
                     c.Orders.Add(orderId);
