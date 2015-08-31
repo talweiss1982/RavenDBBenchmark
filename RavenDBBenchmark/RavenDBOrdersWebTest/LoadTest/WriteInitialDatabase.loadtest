@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<LoadTest Name="WriteInitialDatabase" Description="" Owner="" storage="c:\work\ravendbbenchmark\ravendbbenchmark\ravendborderswebtest\loadtest\writeinitialdatabase.loadtest" Priority="2147483647" Enabled="true" CssProjectStructure="" CssIteration="" DeploymentItemsEditable="" WorkItemIds="" TraceLevel="None" CurrentRunConfig="Run Settings1" Id="0073ae76-b07a-4b5e-8144-19ec03906a81" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+<LoadTest Name="WriteInitialDatabase" Description="" Owner="" storage="d:\work\ravendbbenchmark\ravendbbenchmark\ravendborderswebtest\loadtest\writeinitialdatabase.loadtest" Priority="2147483647" Enabled="true" CssProjectStructure="" CssIteration="" DeploymentItemsEditable="" WorkItemIds="" TraceLevel="None" CurrentRunConfig="Run Settings1" Id="0073ae76-b07a-4b5e-8144-19ec03906a81" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
   <Scenarios>
     <Scenario Name="Write Heavy" DelayBetweenIterations="0" PercentNewUsers="0" IPSwitching="false" TestMixType="PercentageOfTestsStarted" ApplyDistributionToPacingDelay="true" MaxTestIterations="0" DisableDuringWarmup="false" DelayStartTime="0" AllowedAgents="">
       <ThinkProfile Value="0" Pattern="Off" />

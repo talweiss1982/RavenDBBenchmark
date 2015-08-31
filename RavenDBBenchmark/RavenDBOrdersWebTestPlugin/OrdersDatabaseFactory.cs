@@ -28,8 +28,12 @@ namespace RavenDBOrdersWebTestPlugin
             _documentStore = new DocumentStore()
             {
                 DefaultDatabase = DatabaseName,
-                Url = ServerUrl
-            }.Initialize();
+                Url = ServerUrl,				
+            };
+
+			
+	        _documentStore.Initialize();
+
             if (ShouldGenerateNewDBForTestSet.Contains(loadTestName))
                 GenerateOrdersDBSampleDatabase();
         }
@@ -57,7 +61,7 @@ namespace RavenDBOrdersWebTestPlugin
             new SalesPerCustomer().Execute(_documentStore);
             while (_documentStore.DatabaseCommands.GetStatistics().StaleIndexes.Count() != 0)
             {
-                Thread.Sleep(100);
+                Thread.Sleep(5000);
             }
         }
         private static HashSet<String> ShouldGenerateNewDBForTestSet = new HashSet<string>() { "WriteInitialDatabase", "GenerateDatabase" };
@@ -66,7 +70,7 @@ namespace RavenDBOrdersWebTestPlugin
         private static HiLoKeyGenerator _ordersHiloGenerator = new HiLoKeyGenerator("orders", OrdersConfig.CapacityOfOrderHiloKeyGenerator);
         private static HiLoKeyGenerator _customersHiloGenerator = new HiLoKeyGenerator("customers", OrdersConfig.CapacityOfCustomerHiloKeyGenerator);
         public static readonly string DatabaseName = "OrdersDB";
-        public static readonly string ServerUrl = "http://corax:8080/";
+		public static readonly string ServerUrl = "http://scratch1:8080";
 
         public static string GenerateNewOrderId(object entity)
         {

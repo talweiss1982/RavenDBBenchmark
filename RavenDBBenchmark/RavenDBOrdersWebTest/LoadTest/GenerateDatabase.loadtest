@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<LoadTest Name="GenerateDatabase" Description="" Owner="" storage="c:\work\ravendbbenchmark\ravendbbenchmark\ravendborderswebtest\loadtest\generatedatabase.loadtest" Priority="2147483647" Enabled="true" CssProjectStructure="" CssIteration="" DeploymentItemsEditable="" WorkItemIds="" TraceLevel="None" CurrentRunConfig="Run Settings1" Id="0776289f-d5e5-47e9-9f63-63293feaf0f7" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+<LoadTest Name="GenerateDatabase" Description="" Owner="" storage="d:\work\ravendbbenchmark\ravendbbenchmark\ravendborderswebtest\loadtest\generatedatabase.loadtest" Priority="2147483647" Enabled="true" CssProjectStructure="" CssIteration="" DeploymentItemsEditable="" WorkItemIds="" TraceLevel="None" CurrentRunConfig="Run Settings1" Id="0776289f-d5e5-47e9-9f63-63293feaf0f7" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
   <Scenarios>
     <Scenario Name="Write Heavy Fail" DelayBetweenIterations="0" PercentNewUsers="0" IPSwitching="false" TestMixType="PercentageOfTestsStarted" ApplyDistributionToPacingDelay="true" MaxTestIterations="0" DisableDuringWarmup="false" DelayStartTime="0" AllowedAgents="">
       <ThinkProfile Value="0" Pattern="Off" />
       <LoadProfile Pattern="Step" InitialUsers="10" MaxUsers="500" StepUsers="10" StepDuration="1" StepRampTime="0" />
       <TestMix>
-        <TestProfile Name="GenerateCustomerWithOrders" Path="..\bin\debug\ravendborderswebtest.dll" Id="5f52e024-6cae-9475-947e-7f2b3e2c055a" Percentage="100" Type="Microsoft.VisualStudio.TestTools.WebStress.CodedWebTestElement, Microsoft.VisualStudio.QualityTools.LoadTest, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+        <TestProfile Name="GenerateCustomerWithOrders" Path="..\bin\release\ravendborderswebtest.dll" Id="5f52e024-6cae-9475-947e-7f2b3e2c055a" Percentage="100" Type="Microsoft.VisualStudio.TestTools.WebStress.CodedWebTestElement, Microsoft.VisualStudio.QualityTools.LoadTest, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
       </TestMix>
       <BrowserMix>
         <BrowserProfile Percentage="100">
